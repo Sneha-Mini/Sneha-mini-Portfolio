@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title>Sneha's Portfolio</title>
+    <link rel="icon" href="image/logo.ico" type="image/x-icon">
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Define header styles */
+        header {
+            background-color: #CAF0F8;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Style the logo image */
+        .headerlogo {
+            max-width: 130px; /* Adjust the width as needed */
+            height: auto;
+        }
+
+        /* Style the text on the right side */
+        .header-text {
+            text-align: right;
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Style the anchor tags (links) */
+        .header-text a {
+            color: black; /* Set text color to black */
+            text-decoration: none; /* Remove underlines */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        
+
+        /* Toggle button for responsive menu */
+        .menu-toggle {
+            display: none;
+        }
+
+
+        /* Main content section styles */
+        .main-content {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 20px; /* Added margin for left and right space */
+        }
+
+        /* Left content */
+        .left-content {
+            padding: 0px 20px;
+            flex: 2;
+        }
+
+        /* Right content */
+        .right-content {
+            flex: 1;
+            text-align: center;
+        }
+		
+		@media(max-width:600px){
+			.main-content {
+                flex-direction: column; /* Stack content in a column on smaller screens */
+            }
+
+            /* Reorder content for smaller screens */
+            .right-content {
+                order: 3;
+            }
+            .left-content {
+                padding: 0px;
+            }
+		}
+
+        /* Heading style */
+        .heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraph style */
+        .paragraph {
+            font-size: 28px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .right-content img {
+            max-width: 100%;
+            height: auto;
+        }
+		
+
+        /* Style for the skills section */
+        #skills-section {
+            background-color: #CAF0F8;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Style for the section content */
+        #skills-section .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Style for the section paragraph */
+        .section-paragraph {
+            font-size: 24px;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .skills-image {
+            max-width: 60%;
+            height: auto;
+        }
+
+        /* Style for the project section */
+        #project-section {
+            background-color: white;
+            padding: 20px;
+        }
+
+        #project-section .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Style for the project grid (2 columns on larger screens) */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+            gap: 20px;
+        }
+
+
+        /* Style for each project item */
+        .project-item {
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Style for the video within each project item */
+        .project-item img {
+            max-width: 100%; /* Adjust video width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Style for the project heading */
+        .project-heading {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Style for the project paragraph */
+        .project-paragraph {
+            font-size: 16px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* Style for project buttons */
+        .project-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .project-button {
+            background-color: #CAF0F8;
+            color: #000;
+            text-decoration: none;
+            padding: 5px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .project-button:hover {
+            background-color: #00D3FF;
+        }
+
+        .project-item:hover {
+            text-align: center;
+            padding: 0px;
+            overflow: hidden;
+        }
+		
+		
+        /* Style for Volunteer Experience section */
+        #volunteer-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Style for volunteer items container */
+        .volunteer-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next row if needed */
+            gap: 20px; /* Add spacing between items */
+        }
+
+        /* Style for volunteer items */
+        .volunteer-item {
+            flex: 1; /* Each volunteer item takes equal space in a row */
+            background-color: #CAF0F8;
+            border-radius: 8px;
+            padding: 20px; /* Stack image, heading, and paragraph vertically */
+        }
+
+        .volunteer-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .volunteer-subheading {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .volunteer-paragraph {
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+        
+
+        /* Style for the certificate section */
+        #certificates-section {
+            background-color: #CAF0F8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Style for the section content */
+        #certificates-section .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Style for the section heading */
+        .section-heading {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+
+        /* Style for the certificate scroll container */
+        .certificate-scroll {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            padding: 20px 0;
+            /* Hide the scrollbar */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        /* Hide the scrollbar for Webkit (Chrome, Safari) */
+        .certificate-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Style for individual certificates */
+        .certificate-scroll img {
+            max-width: 300px;
+            height: auto;
+            scroll-snap-align: start;
+            margin-right: 20px;
+            border: 1px solid #CAF0F8;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(202, 240, 248, 1);
+        }
+
+        /* Style for left and right arrow images */
+        .certificate-scroll::before,
+        .certificate-scroll::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-image: url('image/left-arrow.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .certificate-scroll::before {
+            left: 0;
+            background-position: center;
+            opacity: 0.5;
+        }
+
+        .certificate-scroll::after {
+            right: 0;
+            background-position: center;
+            transform: translateY(-50%) rotate(180deg);
+            opacity: 0.5;
+        }
+
+        /* Style for the resume content */
+        .resume-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Equal space between items */
+            flex-direction: row; /* Make sure items are in a row */
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto; /* Allow items to wrap on smaller screens if needed */
+        }
+
+        /* Style for the left div with resume image */
+        .resume-image {
+            flex: 1; /* Take up available space equally */
+            margin: 0px 15px; /* Add a small margin between the left and right divs */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+        }
+
+        /* Style for the resume heading */
+        .resume-heading {
+            text-align: center; /* Center-align the text */
+        }
+
+        .resume-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #CAF0F8;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(202, 240, 248, 1);
+        }
+
+        /* Style for the right div with download button */
+        .resume-download {
+            flex: 1; /* Take up available space equally */
+            margin-left: 10px; /* Add a small margin between the left and right divs */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+        }
+
+        .resume-download .download-button {
+            background-color: #CAF0F8;
+            color: black;
+            text-decoration:none;
+            font-weight: bold;
+            padding: 10px 20px;
+            font-size:15px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center; /* Center text and icon vertically */
+        }
+
+        /* Style for the download button text */
+        .resume-download .download-button img {
+            max-width: 24px;
+            height: auto;
+            margin-left: 10px; /* Adjust spacing between text and icon */
+        }
+
+        /* Hover effect for the download button */
+        .resume-download .download-button:hover {
+            background-color: #00D3FF;
+        }
+
+        /* Style for the contact section */
+        #contact-section {
+            background-color: #CAF0F8;
+            padding: 20px;
+        }
+
+        /* Style for the section content */
+        #contact-section .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for the section paragraph */
+        #contact-section .section-paragraph {
+            font-size: 24px;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Style for the contact div */
+        .contact-div {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Style for the location icon */
+        .material-icons {
+            vertical-align: middle;
+        }
+
+        /* Style for the contact icons */
+        .contact-icons {
+            margin-top: 20px; /* Add spacing between text and icons */
+        }
+
+        /* Style for individual contact icons */
+        .contact-icons img {
+            max-width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+		/* Footer styles */
+        footer {
+            background-color: white;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+		
+		@media (max-width: 1100px) {
+            /* Heading style */
+            .heading {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            .section-heading {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            /* Paragraph style */
+            .paragraph {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+            .section-paragraph {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+            .right-content img {
+                width: 100%;
+                height: auto;
+            }
+			.volunteer-heading {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            .volunteer-subheading {
+                font-size: 20px;
+                margin-top: 0;
+            }
+
+            /* Paragraph style */
+            .volunteer-paragraph {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+            
+        }
+		
+        @media (max-width: 768px) {
+            
+            /* Style for individual contact icons */
+            .contact-icons img {
+                max-width: 30px;
+                height: auto;
+                margin-right: 10px;
+            }
+            #contact-section .section-paragraph {
+                font-size: 14px;
+                line-height: 1.5;
+                font-family: 'Inter', sans-serif;
+            }
+			footer {
+                padding: 3px;
+                font-size: 10px;
+            }
+			.header-text {
+                display: none;
+                flex-direction: column;
+                align-items: flex-end;
+                position: absolute;
+				font-size:14px;
+                top: 40px;
+                right: 10px;
+                padding: 10px;
+				gap: 6px;
+            }
+            
+            .header.show-dropdown .header-text {
+                display: flex;	
+				background-color: #CAF0F8;		
+				
+            }
+
+            .header.show-dropdown .header-text a {
+                margin: 10px 0;
+            }
+			.headerlogo {
+				max-width: 80px; /* Adjust the width as needed */
+				height: auto;
+			}
+			.menu-toggle {
+                display: block;
+                cursor: pointer;
+            }
+			.project-grid {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+			.volunteer-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+                margin: 5px;
+            }
+            .volunteer-heading {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .volunteer-subheading {
+                font-size: 18px;
+                margin-top: 0;
+            }
+
+            /* Paragraph style */
+            .volunteer-paragraph {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+			.skills-image {
+                max-width: 100%;
+                height: auto;
+            }
+			.resume-download .download-button {
+                font-size: 12px;
+            }
+            .resume-content {
+                display: flex;
+                align-items: center;
+                flex-direction: column; /* Make sure items are in a row */
+            }
+            .resume-image img {
+                max-width: 60%;
+                height: auto;
+                margin-bottom:15px;
+            }
+        }
+		
+		@media (max-width:320px){
+			.project-button {
+				font-size:11px;
+			}
+			/* Heading style */
+            .heading {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+            .section-heading {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            /* Paragraph style */
+            .paragraph {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .section-paragraph {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .right-content img {
+                width: 100%;
+                height: auto;
+            }
+			#contact-section .section-paragraph {
+                font-size: 12px;
+                line-height: 1.5;
+                font-family: 'Inter', sans-serif;
+            }
+			.resume-download .download-button {
+                font-size: 10px;
+            }
+			.project-item {
+				text-align: center;
+				padding: 0px;
+				overflow: hidden;
+			}
+			 #contact-section .section-paragraph {
+                font-size: 10px;
+                line-height: 1.5;
+                font-family: 'Inter', sans-serif;
+            }
+			.resume-download .download-button {
+                font-size: 10px;
+            }
+			.volunteer-heading {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            .volunteer-subheading {
+                font-size: 16px;
+                margin-top: 0;
+            }
+
+            /* Paragraph style */
+            .volunteer-paragraph {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+			
+		}
+
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Logo image on the left side -->
+        <img src="image/logo.png" alt="Logo" class="headerlogo">
+        
+        <!-- Responsive menu toggle button -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        
+        <!-- Text on the right side with links to respective sections -->
+        <div class="header-text">
+            <a href="#skills-section">SKILLS</a>
+            <a href="#project-section">PROJECT</a>
+            <a href="#certificates-section">CERTIFICATES</a>
+            <a href="#resume-section">RESUME</a>
+            <a href="#contact-section">CONTACT</a>
+        </div>
+    </header>
+
+    <!-- Main content section -->
+    <div class="main-content">
+        <!-- Left content -->
+        <div class="left-content">
+            <h2 class="heading">DEVELOPER AND CREATIVE </br>PROBLEM SOLVER</h2>
+            <p class="paragraph">I'm Sneha, a creative individual with a passion for mobile and web app development, particularly in UI/UX design. I excel in creative problem-solving and possess strong communication and leadership skills.</p>
+        </div>
+        
+        <!-- Right content -->
+        <div class="right-content">
+            <img src="image/girl.png" alt="Girl Image" >
+        </div>
+    </div>
+    
+    <!-- Sections on the page -->
+	<section id="skills-section" style="background-color: #CAF0F8;"></br>
+		<div class="section-content">
+			<div class="section-center">
+				<h2 class="section-heading" style="margin:0px">WHAT I KNOW ?</h2>
+				<p class="section-paragraph" style="margin:10px" >I design and develop user-friendly mobile and web apps with a strong focus on UI/UX aesthetics. Skilled in programming and effective problem-solving.</p>
+				<img src="image/skills.png" alt="Skills Image" class="skills-image">
+			</div>
+		</div>
+	</section>
+
+    <!-- Project section -->
+	<section id="project-section" style="background-color: white;">
+		<div class="section-content">
+		<h2 class="section-heading" style="display: flex;justify-content: center;">PROJECT</h2>
+			<div class="project-grid">
+				<!-- Project 1 -->
+				<div class="project-item">
+					<img src="image/mini's_blog.jpeg" alt="Girl Image" >
+					<h3 class="project-heading">Mini’s Blog</h3>
+					<p class="project-paragraph">Designed a mobile-responsive blog using HTML, CSS, JavaScript, and PHP for easy content access on various devices, ensuring a visually appealing user interface.</p>
+					<div class="project-buttons">
+						<a href="https://youtu.be/0Kk-mAOgGE8" target="_blank" class="project-button">Youtube</a>
+						<a href="https://www.figma.com/file/JpheBLTReyGj36aIaUDtkM/Blog?type=design&node-id=0%3A1&mode=design&t=LxLC8ew5Fq5sAwcG-1" target="_blank" class="project-button">Design</a>
+						<a href="https://github.com/Sneha-Mini/Mini-s-Blog.git" target="_blank" class="project-button">Code</a>
+					</div>
+				</div>
+
+				<!-- Project 2 -->
+				<div class="project-item">
+					<img src="image/flexa.jpeg" alt="Girl Image" >
+					<h3 class="project-heading">Flexa - Your fitness buddy</h3>
+					<p class="project-paragraph">Developed a personalized fitness companion website. Offers workout plan and exercise based on the user goals and body type. </p>
+					<div class="project-buttons">
+						<a href="https://youtu.be/xfvHp7qS3DI" target="_blank" class="project-button">Youtube</a>
+						<a href="https://www.figma.com/file/sYLtr73ANajMm2nENxWTJV/FLEXA?type=design&mode=design&t=860BY7bB0XRXSWWE-1" target="_blank" class="project-button">Design</a>
+						<a href="https://github.com/Sneha-Mini/Flexa.git" target="_blank" class="project-button">Code</a>
+					</div>
+				</div>
+
+				<!-- Project 3 -->
+				<div class="project-item">
+					<img src="image/cgpa_gpa.jpeg" alt="Girl Image" >
+					<h3 class="project-heading">GPA & CGPA Calculator</h3>
+					<p class="project-paragraph">Created a user-friendly Java and XML app for easy GPA and CGPA calculation based on inputted course data.</p>
+					<div class="project-buttons">
+						<a href="https://youtu.be/kDiEyu_OlRU" target="_blank" class="project-button">Youtube</a>
+						<a href="https://www.figma.com/file/iRqPXjMQ4W2ryBxAJTkuAp/GPA-%26-CGPA-CALCULATOR?type=design&mode=design&t=860BY7bB0XRXSWWE-1" target="_blank" class="project-button">Design</a>
+						<a href="https://github.com/Sneha-Mini/GPA-CGPA-CALCULATOR.git" target="_blank" class="project-button">Code</a>
+					</div>
+				</div>
+
+				<!-- Project 4 -->
+				<div class="project-item">
+					<img src="image/pedometer.jpeg" alt="Girl Image" >
+					<h3 class="project-heading">Pedometer</h3>
+					<p class="project-paragraph">Developed a Java and XML app to track steps, distance, and calories burned, offering weekly progress reports and social media sharing.</p>
+					<div class="project-buttons">
+						<a href="https://youtu.be/J4GgW3iTUZk" target="_blank" class="project-button">Youtube</a>
+						<a href="https://www.figma.com/file/LwuzTBFgAc5SYtuZeZZEz5/Pedometer?type=design&node-id=4%3A190&mode=design&t=860BY7bB0XRXSWWE-1" target="_blank" class="project-button">Design</a>
+						<a href="https://github.com/Sneha-Mini/Pedometer.git" target="_blank" class="project-button">Code</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Volunteer Experience section -->
+	<section id="volunteer-section">
+		<div class="section-content">
+			<h2 class="section-heading" style="display: flex;justify-content: center; margin-top:0px;">VOLUNTER EXPERIENCE</h2>
+			
+			<!-- Volunteer items container -->
+			<div class="volunteer-container">
+				<div class="volunteer-item">
+					<h3 class="volunteer-heading" style="margin-bottom:0px;" >App Monsters Club - 2022</h3>
+					<h1 class="volunteer-subheading" style="margin:0px; font-size:20px">Vice President</h1>
+					<p class="volunteer-paragraph">
+						&#128077 I promoted Android technology awareness and mentored students in Android app development.</br>&#128266 Organized expert talks and workshops on Android app development tools and techniques for club members.
+					</p>
+				</div>
+
+				<!-- Add another volunteer item similarly -->
+				<div class="volunteer-item">
+					<h3 class="volunteer-heading" style="margin-bottom:0px;" >Activity Based Learning - 2021</h3>
+					<h1 class="volunteer-subheading" style="margin:0px; font-size:20px">Event Coordinator</h1>
+					<p class="volunteer-paragraph">
+						&#128187 Organized and coordinated a successful paper presentation competition, promoting academic engagement and knowledge sharing.</br>&#127908 Conducted informative sessions as part of the ABL event, enhancing participants' understanding of diverse topics.
+					</p>
+				</div>
+				
+			</div>
+		</div>
+	</section></br>
+
+    <!-- Certificate section -->
+	<section id="certificates-section" style="background-color: #CAF0F8;">
+		<div class="section-content">
+			<h2 class="section-heading">CERTIFICATES</h2>
+			<div class="certificate-scroll">
+				<img src="certificates/c1.jpg" alt="Certificate 1">
+				<img src="certificates/c2.jpg" alt="Certificate 2">
+				<img src="certificates/c3.jpg" alt="Certificate 3">
+				<img src="certificates/c4.jpg" alt="Certificate 4">
+				<img src="certificates/c5.jpg" alt="Certificate 5">
+				<img src="certificates/c6.jpeg" alt="Certificate 6">
+				<img src="certificates/c7.jpg" alt="Certificate 7">
+				<img src="certificates/c8.jpeg" alt="Certificate 8">
+				<img src="certificates/c9.jpeg" alt="Certificate 9">
+				<img src="certificates/c10.jpg" alt="Certificate 10">
+			</div>
+		</div>
+	</section>
+
+
+    <!-- Resume section -->
+	<section id="resume-section" style="background-color: white;">
+		<div class="section-content">
+			<h2 class="section-heading resume-heading">RESUME</h2>
+			<div class="resume-content">
+				<!-- Left div with resume image -->
+				<div class="resume-image">
+					<img src="image/resume.jpg" alt="Resume">
+				</div></br>
+				<!-- Right div with download button -->
+				<div class="resume-download">
+					<a href="resume/Resume.pdf" download="resume/Resume.pdf" class="download-button">
+						DOWNLOAD RESUME
+						<img src="image/download.png" alt="Download Icon">
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	</br></br>
+
+    <!-- Contact section -->
+	<section id="contact-section" style="background-color: #CAF0F8;">
+		<div class="section-content">
+			<div class="contact-div">
+				<!-- Heading and paragraph -->
+				<h2 class="section-heading" style="margin-top:5px">REACH OUT TO ME !</h2>
+				<div class="section-paragraph">
+					<p>DISCUSS A PROJECT OR JUST WANT TO SAY HI? MY INBOX IS OPEN FOR ALL.</p>
+
+					<!-- Location and opportunities -->
+					<p>
+						<i class="material-icons" style="font-size: 20px">place</i>
+						<strong>Chennai</strong>
+						&ensp;
+						Open for opportunities: Yes
+					</p>
+				</div>
+
+				<!-- Contact icons -->
+				<div class="contact-icons">
+					<a href="https://github.com/Sneha-Mini"><img src="image/git.png" alt="Github"></a>
+					<a href="mailto:snehaminion2002@gmail.com"><img src="image/Gmail.png" alt="Gmail"></a>
+					<a href="http://www.linkedin.com/in/sneha-g26"><img src="image/linkedin.png" alt="Linkedin"></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    
+    <footer>
+		<p>Made by <strong>SNEHA</strong></p>
+    </footer>
+    
+    <script>
+    function toggleMenu() {
+        const header = document.querySelector('.header');
+        header.classList.toggle('show-dropdown');
+		var myDiv = document.getElementById("menu-toggle");
+        myDiv.style.display = "block";
+    }
+	
+</script>
+</body>
+</html>
